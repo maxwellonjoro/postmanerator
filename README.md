@@ -239,7 +239,9 @@ Alternatively, you can download the source code and compile it by hand. The Go p
 
 - Follow the instructions to [get the latest version of Golang installed](https://golang.org/doc/install) on your machine
 - Download Postmanerator using go get: `go get github.com/aubm/postmanerator`
-- Finally, generate the binary with `go install`
+- Or download by forking/cloning this repo: `git clone github.com/your_username/postmanerator`
+- Generate the binary with `go build`
+- To use the binary: `postmanerator -output=./doc.html -collection=$YOUR_PROJECT/postman/collection.json`
 
 There is also a community maintained docker image available, simply run:
 
