@@ -36,16 +36,17 @@ Host: %v`, request.Method, parsedURL.RequestURI(), parsedURL.Host)
 		return
 	}
 
-	if request.PayloadType == "urlencoded" {
-		var dataList []string
-		for _, data := range request.PayloadParams {
-			dataList = append(dataList, fmt.Sprintf("%v=%v", data.Key, data.Value))
-		}
-		httpSnippet += fmt.Sprintf(`
-Content-Type: application/x-www-form-urlencoded
+	//included already in postman - so not needed here
+	// 	if request.PayloadType == "urlencoded" {
+	// 		var dataList []string
+	// 		for _, data := range request.PayloadParams {
+	// 			dataList = append(dataList, fmt.Sprintf("%v=%v", data.Key, data.Value))
+	// 		}
+	// 		httpSnippet += fmt.Sprintf(`
+	// Content-Type: application/x-www-form-urlencoded
 
-%v`, strings.Join(dataList, "&"))
-	}
+	// %v`, strings.Join(dataList, "&"))
+	// 	}
 
 	if request.PayloadType == "params" {
 		boundary := "----WebKitFormBoundary7MA4YWxkTrZu0gW"
@@ -66,6 +67,9 @@ Content-Disposition: form-data; name="%v"
 }
 
 func parsedURL(rawUrl string) (*url.URL, error) {
+	//needed to remove { & } around env_variable due to parsing error
+	rawUrl = strings.ReplaceAll(rawUrl, "{", "")
+	rawUrl = strings.ReplaceAll(rawUrl, "}", "")
 	parsedURL, err := url.Parse(rawUrl)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse url\n%v", err)
