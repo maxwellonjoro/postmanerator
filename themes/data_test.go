@@ -126,14 +126,14 @@ var exampleCollection = postman.Collection{
 			Name:        "Cat",
 			Description: "Cat are felines",
 			Fields: []postman.StructureFieldDefinition{
-				{Name: "Name", Description: "The name of the cat", Type: "string"},
+				{Name: "Name", Description: "The name of the cat", Type: "string", CharacterLength: "10"},
 			},
 		},
 		{
 			Name:        "Dog",
 			Description: "Dog are canines",
 			Fields: []postman.StructureFieldDefinition{
-				{Name: "Name", Description: "The name of the dog", Type: "string"},
+				{Name: "Name", Description: "The name of the dog", Type: "string", CharacterLength: "10"},
 			},
 		},
 	},

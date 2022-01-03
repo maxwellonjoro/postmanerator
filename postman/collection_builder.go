@@ -193,6 +193,11 @@ func (c *CollectionBuilder) getStructureDefinition(srcVal otto.Value) (Structure
 			fieldDef.Type = fieldType
 		}
 
+		// Get field characterLength
+		if fieldCharacterLength, ok := fieldDefMap["characterLength"].(string); ok == true {
+			fieldDef.CharacterLength = fieldCharacterLength
+		}
+
 		structDef.Fields = append(structDef.Fields, fieldDef)
 	}
 
