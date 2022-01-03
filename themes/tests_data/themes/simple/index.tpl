@@ -27,6 +27,13 @@ Key={{ .Key }}
 Value={{ .Value }}
 Description={{ .Description }}
 {{ end }}
+QueryParams
+{{ range .QueryParams }}
+Name={{ .Name }}
+Key={{ .Key }}
+Value={{ .Value }}
+Description={{ .Description }}
+{{ end }}
 Headers
 {{ range .Headers }}
 Name={{ .Name }}
@@ -42,6 +49,7 @@ Name={{ .Name }}
 Status={{ .Status }}
 StatusCode={{ .StatusCode }}
 Body={{ .Body }}
+PayloadRaw={{ .PayloadRaw }}
 Headers
 {{ range .Headers }}
 Name={{ .Name }}
@@ -82,6 +90,13 @@ Key={{ .Key }}
 Value={{ .Value }}
 Description={{ .Description }}
 {{ end }}
+QueryParams
+{{ range .QueryParams }}
+Name={{ .Name }}
+Key={{ .Key }}
+Value={{ .Value }}
+Description={{ .Description }}
+{{ end }}
 Headers
 {{ range .Headers }}
 Name={{ .Name }}
@@ -97,6 +112,7 @@ Name={{ .Name }}
 Status={{ .Status }}
 StatusCode={{ .StatusCode }}
 Body={{ .Body }}
+PayloadRaw={{ .PayloadRaw }}
 Headers
 {{ range .Headers }}
 Name={{ .Name }}
@@ -119,5 +135,6 @@ Fields
 Name={{ .Name }}
 Description={{ .Description }}
 Type={{ .Type }}
+CharacterLength={{ .CharacterLength }}
 {{ end }}
 {{ end }}
