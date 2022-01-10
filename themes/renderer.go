@@ -24,13 +24,14 @@ func (r *Renderer) Render(w io.Writer, theme *Theme, collection postman.Collecti
 
 func (r *Renderer) getTemplateHelpers() template.FuncMap {
 	return template.FuncMap{
-		"curlSnippet":  curlSnippet,
-		"findResponse": helperFindResponse,
-		"hasContent":   helperHasContent,
-		"httpSnippet":  helperHttpSnippet,
-		"indentJSON":   helperIndentJSON,
-		"inline":       helperInline,
-		"markdown":     helperMarkdown,
-		"slugify":      helperSlugify,
+		"curlSnippet":       curlSnippet,
+		"findResponse":      helperFindResponse,
+		"findFirstResponse": helperFindFirstResponse,
+		"hasContent":        helperHasContent,
+		"httpSnippet":       helperHttpSnippet,
+		"indentJSON":        helperIndentJSON,
+		"inline":            helperInline,
+		"markdown":          helperMarkdown,
+		"slugify":           helperSlugify,
 	}
 }

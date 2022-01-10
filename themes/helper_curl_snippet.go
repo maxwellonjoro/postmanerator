@@ -13,7 +13,7 @@ func curlSnippet(request postman.Request) string {
 	payloadReady, _ := regexp.Compile("POST|PUT|PATCH|DELETE")
 	curlSnippet += fmt.Sprintf("curl -X %v", request.Method)
 	curlSnippet += fmt.Sprintf(` "%v"`, request.URL)
-	//curlSnippet += fmt.Sprintf(" \\")
+	curlSnippet += fmt.Sprintf(" \\")
 
 	if payloadReady.MatchString(request.Method) {
 		//not needed as included in postman
@@ -43,7 +43,7 @@ func curlSnippet(request postman.Request) string {
 					curlSnippet += fmt.Sprintf(`--data-urlencode "%v=%v"`, data.Key, data.Value)
 					curlSnippet += fmt.Sprintf(" \\")
 					curlSnippet += fmt.Sprintf("\n")
-					curlSnippet = strings.TrimRight(curlSnippet, " \\")
+					//curlSnippet = strings.TrimRight(curlSnippet, " \\")
 					//dataList = append(dataList, fmt.Sprintf("%v=%v", data.Key, data.Value))
 				}
 				//curlSnippet += fmt.Sprintf(`--data-urlencode "%v"`, dataList)
