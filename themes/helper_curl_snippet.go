@@ -18,9 +18,9 @@ func curlSnippet(request postman.Request) string {
 	getPathOnly := strings.Replace(request.URL, "{"+host+"}", "", 1)
 
 	curlSnippet += fmt.Sprintf("curl -X %v", request.Method)
-	curlSnippet += fmt.Sprintf(` https://"%v"`, host+getPathOnly)
+	curlSnippet += fmt.Sprintf(` "https://%v"`, host+getPathOnly)
 	curlSnippet += fmt.Sprintf(" \\")
-	fmt.Println("curlSnippet", curlSnippet)
+	// fmt.Println("curlSnippet", curlSnippet)
 	if payloadReady.MatchString(request.Method) {
 		//not needed as included in postman
 		// if request.PayloadType == "urlencoded" {
