@@ -16,8 +16,11 @@ func helperHttpSnippet(request postman.Request) (httpSnippet string) {
 		return
 	}
 
+	host := strings.Split(parsedURL.RequestURI(), "/")[0]
+	getPathOnly := strings.Replace(parsedURL.RequestURI(), host, "", 1)
+
 	httpSnippet += fmt.Sprintf(`%v %v HTTP/1.1
-Host: %v`, request.Method, parsedURL.RequestURI(), parsedURL.Host)
+Host: %v`, request.Method, getPathOnly, host)
 
 	for _, header := range request.Headers {
 		httpSnippet += fmt.Sprintf("\n%v: %v", header.Name, header.Value)
@@ -70,6 +73,7 @@ func parsedURL(rawUrl string) (*url.URL, error) {
 	//needed to remove { & } around env_variable due to parsing error
 	rawUrl = strings.ReplaceAll(rawUrl, "{", "")
 	rawUrl = strings.ReplaceAll(rawUrl, "}", "")
+
 	parsedURL, err := url.Parse(rawUrl)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse url\n%v", err)

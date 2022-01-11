@@ -10,9 +10,10 @@ import (
 
 func curlSnippet(request postman.Request) string {
 	var curlSnippet string
+
 	payloadReady, _ := regexp.Compile("POST|PUT|PATCH|DELETE")
 	curlSnippet += fmt.Sprintf("curl -X %v", request.Method)
-	curlSnippet += fmt.Sprintf(` "%v"`, request.URL)
+	curlSnippet += fmt.Sprintf(` https://"%v"`, request.URL)
 	curlSnippet += fmt.Sprintf(" \\")
 
 	if payloadReady.MatchString(request.Method) {
