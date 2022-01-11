@@ -6,3 +6,4 @@ doc.md
 *.coverprofile
 *.out
 vendor
+.DS_Store
